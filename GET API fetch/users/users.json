@@ -1,0 +1,193 @@
+{
+ "code": 200,
+ "meta": {
+  "pagination": {
+   "total": 1320,
+   "pages": 66,
+   "page": 1,
+   "limit": 20
+  }
+ },
+ "data": [
+  {
+   "id": 1,
+   "name": "Miss Parvati Khan",
+   "email": "khan_miss_parvati@tillman-schulist.biz",
+   "gender": "Female",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.597+05:30",
+   "updated_at": "2021-01-19T03:50:03.597+05:30"
+  },
+  {
+   "id": 2,
+   "name": "Rev. Ekdant Kaniyar",
+   "email": "kaniyar_rev_ekdant@miller.co",
+   "gender": "Female",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.647+05:30",
+   "updated_at": "2021-01-19T03:50:03.647+05:30"
+  },
+  {
+   "id": 4,
+   "name": "Tej Varman VM",
+   "email": "vm_varman_tej@pfannerstill-ernser.name",
+   "gender": "Female",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.673+05:30",
+   "updated_at": "2021-01-19T03:50:03.673+05:30"
+  },
+  {
+   "id": 6,
+   "name": "Charak Iyengar DO",
+   "email": "iyengar_charak_do@lebsack-miller.biz",
+   "gender": "Male",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.691+05:30",
+   "updated_at": "2021-01-19T03:50:03.691+05:30"
+  },
+  {
+   "id": 7,
+   "name": "Dayaananda Acharya",
+   "email": "dayaananda_acharya@wiza-ryan.co",
+   "gender": "Male",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.707+05:30",
+   "updated_at": "2021-01-19T03:50:03.707+05:30"
+  },
+  {
+   "id": 8,
+   "name": "Bhagwanti Ganaka",
+   "email": "ganaka_bhagwanti@marks-thiel.co",
+   "gender": "Female",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.714+05:30",
+   "updated_at": "2021-01-19T03:50:03.714+05:30"
+  },
+  {
+   "id": 9,
+   "name": "Suman Rana",
+   "email": "rana_suman@hackett.org",
+   "gender": "Male",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.723+05:30",
+   "updated_at": "2021-01-19T03:50:03.723+05:30"
+  },
+  {
+   "id": 10,
+   "name": "Test2022",
+   "email": "testUser2022@testemail.co",
+   "gender": "Male",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.739+05:30",
+   "updated_at": "2021-01-19T04:51:14.892+05:30"
+  },
+  {
+   "id": 11,
+   "name": "Pres. Baladitya Namboothiri",
+   "email": "namboothiri_pres_baladitya@dooley-senger.co",
+   "gender": "Male",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.749+05:30",
+   "updated_at": "2021-01-19T03:50:03.749+05:30"
+  },
+  {
+   "id": 12,
+   "name": "Avantika Varman",
+   "email": "varman_avantika@rau.name",
+   "gender": "Female",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.759+05:30",
+   "updated_at": "2021-01-19T03:50:03.759+05:30"
+  },
+  {
+   "id": 13,
+   "name": "Miss Amaresh Dutta",
+   "email": "dutta_amaresh_miss@marks.name",
+   "gender": "Male",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.777+05:30",
+   "updated_at": "2021-01-19T03:50:03.777+05:30"
+  },
+  {
+   "id": 14,
+   "name": "Susheel Gowda",
+   "email": "gowda_susheel@bogisich-boehm.net",
+   "gender": "Male",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.79+05:30",
+   "updated_at": "2021-01-19T03:50:03.79+05:30"
+  },
+  {
+   "id": 15,
+   "name": "Bakula Varma",
+   "email": "varma_bakula@mclaughlin.co",
+   "gender": "Female",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.816+05:30",
+   "updated_at": "2021-01-19T03:50:03.816+05:30"
+  },
+  {
+   "id": 16,
+   "name": "Anusuya Acharya Sr.",
+   "email": "anusuya_sr_acharya@braun-gleason.io",
+   "gender": "Female",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.825+05:30",
+   "updated_at": "2021-01-19T03:50:03.825+05:30"
+  },
+  {
+   "id": 17,
+   "name": "Brijesh Guneta DC",
+   "email": "dc_brijesh_guneta@kris.info",
+   "gender": "Female",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.843+05:30",
+   "updated_at": "2021-01-19T03:50:03.843+05:30"
+  },
+  {
+   "id": 18,
+   "name": "Girika Nehru",
+   "email": "girika_nehru@sipes.name",
+   "gender": "Male",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.866+05:30",
+   "updated_at": "2021-01-19T03:50:03.866+05:30"
+  },
+  {
+   "id": 19,
+   "name": "Lalita Chaturvedi",
+   "email": "chaturvedi_lalita@altenwerth.name",
+   "gender": "Female",
+   "status": "Active",
+   "created_at": "2021-01-19T03:50:03.878+05:30",
+   "updated_at": "2021-01-19T03:50:03.878+05:30"
+  },
+  {
+   "id": 20,
+   "name": "Gajbaahu Nayar",
+   "email": "nayar_gajbaahu@littel-strosin.io",
+   "gender": "Female",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.888+05:30",
+   "updated_at": "2021-01-19T03:50:03.888+05:30"
+  },
+  {
+   "id": 21,
+   "name": "Anal Chattopadhyay",
+   "email": "anal_chattopadhyay@mcclure.net",
+   "gender": "Male",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.917+05:30",
+   "updated_at": "2021-01-19T03:50:03.917+05:30"
+  },
+  {
+   "id": 23,
+   "name": "Rajan Dhawan",
+   "email": "dhawan_rajan@wisozk-heller.org",
+   "gender": "Female",
+   "status": "Inactive",
+   "created_at": "2021-01-19T03:50:03.958+05:30",
+   "updated_at": "2021-01-19T03:50:03.958+05:30"
+  }
+ ]
+}

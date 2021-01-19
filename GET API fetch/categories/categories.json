@@ -1,0 +1,121 @@
+{
+"code": 200,
+"meta": {
+"pagination": {
+"total": 18,
+"pages": 1,
+"page": 1,
+"limit": 20
+}
+},
+"data": [
+{
+"id": 1,
+"name": "Sports \u0026 Beauty",
+"description": "Caritas credo pecto colligo rerum baiulus distinctio nobis.",
+"status": true
+},
+{
+"id": 2,
+"name": "Toys",
+"description": "Cruentus arma audax corporis cribro timor unde.",
+"status": true
+},
+{
+"id": 3,
+"name": "Movies \u0026 Jewelry",
+"description": "Est depereo celo bardus ocer surgo ad abscido viridis.",
+"status": true
+},
+{
+"id": 4,
+"name": "Movies \u0026 Shoes",
+"description": "Confugo comedo auctor autem certe.",
+"status": true
+},
+{
+"id": 5,
+"name": "Electronics \u0026 Clothing",
+"description": "Verbera desipio tabernus ulciscor sumptus reiciendis.",
+"status": true
+},
+{
+"id": 6,
+"name": "Home, Garden \u0026 Tools",
+"description": "Acerbitas cunae verbera creator volaticus ancilla clementia sunt.",
+"status": true
+},
+{
+"id": 7,
+"name": "Industrial \u0026 Sports",
+"description": "Et dolor arcus cupiditate voluptatem defaeco adimpleo apto adulescens.",
+"status": true
+},
+{
+"id": 8,
+"name": "Books, Health \u0026 Clothing",
+"description": "Celer delinquo in clibanus veritatis laudantium ultio theologus verecundia quo.",
+"status": true
+},
+{
+"id": 9,
+"name": "Sports \u0026 Health",
+"description": "Conturbo amplexus dedico et curia suppono cerno temporibus vito.",
+"status": true
+},
+{
+"id": 10,
+"name": "Baby, Home \u0026 Grocery",
+"description": "Dolor synagoga eligendi vel tero cado tempore veritatis allatus.",
+"status": true
+},
+{
+"id": 11,
+"name": "Garden \u0026 Books",
+"description": "Umerus brevis vultuosus antepono autem amor.",
+"status": true
+},
+{
+"id": 12,
+"name": "Tools",
+"description": "Thymbra temperantia defungo aeternus cur ipsum doloremque vito paulatim vestigium tenax.",
+"status": true
+},
+{
+"id": 13,
+"name": "Movies \u0026 Clothing",
+"description": "Minus comes demum damnatio curis.",
+"status": true
+},
+{
+"id": 14,
+"name": "Tools, Kids \u0026 Computers",
+"description": "Speculum calamitas talis certe votum.",
+"status": true
+},
+{
+"id": 15,
+"name": "Music \u0026 Baby",
+"description": "Capio quis labore doloribus veritatis quibusdam quia theca sed.",
+"status": true
+},
+{
+"id": 16,
+"name": "Movies",
+"description": "Deporto animadverto verto tardus agnosco adsum coruscus saepe eius.",
+"status": true
+},
+{
+"id": 17,
+"name": "Outdoors, Computers \u0026 Sports",
+"description": "Amiculum sopor sollers tamdiu commemoro venustas.",
+"status": true
+},
+{
+"id": 18,
+"name": "Grocery \u0026 Sports",
+"description": "Adficio quia eos utique cura.",
+"status": true
+}
+]
+}
