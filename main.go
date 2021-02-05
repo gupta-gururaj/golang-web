@@ -56,7 +56,7 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 		count = i
 	}
 	count += 2
-	book.ID = strconv.Itoa(count) // Mock ID - not safe
+	book.ID = strconv.Itoa(count)
 	books = append(books, book)
 	json.NewEncoder(w).Encode(book)
 }
