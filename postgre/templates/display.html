@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Contact Details</title>      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        table {
+            width: 1250px;
+            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+    <body>
+              <table border="1" cellspacing="auto" cellpadding="auto">
+                <thead style="background-color:rgb(41, 45, 58); color: whitesmoke;">
+                   <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Email</th>
+                        <th>Avatar</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Edit</th>
+                  </tr>
+                </thead>
+                {{range .Data}}
+                <tbody> 
+                  <tr>
+                        <td>{{.ID}}</td>
+                        <td>{{.FirstName}}</td>
+                        <td>{{.LastName}}</td>
+                        <td>{{.Age}}</td>
+                        <td><a href="{{.Email}}">{{.Email}}</a></td>
+                        <td><img src="data:image/jpg;base64,{{.Image}}"/></td>
+                        <td><a href="/delete?id={{.ID}}" class="btn btn-outline-dark">Delete</a></td>
+                        <td><a href="/update?id={{.ID}}" class="btn btn-outline-dark">Edit</a></td>
+                  </tr>
+                </tbody>
+                {{end}}
+              </table>
+              <a href="/" class="btn btn-dark" style="margin-left: 775px; margin-top: 20px;">Back</a>
+    </body>
+    
+</html>
