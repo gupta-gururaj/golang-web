@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Contact Details</title>      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        table {
+            width: 1250px;
+            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+   <table border="1" cellspacing="auto" cellpadding="auto" id="myTable">
+    <script>
+        fetch('http://localhost:8000/display')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var table = document.getElementById("myTable");
+            for (var i = 0; i < data.length; i++) {
+                var row = table.insertRow(-1); //insert below
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                cell1.innerHTML = data[i].id;
+                cell2.innerHTML = data[i].number;
+                cell3.innerHTML = data[i].tname;
+                cell4.innerHTML = data[i].starts;
+                cell5.innerHTML = data[i].ends;
+            }
+        }
+    </script>
+</body>
+</html>
