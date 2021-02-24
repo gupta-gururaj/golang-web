@@ -15,16 +15,17 @@ import (
 	"net/http"
 )
 
+var done = make(chan bool)
+
 //Train is...
 type Train struct {
-	ID     string `json:"id"`
 	Number string `json:"number"`
 	Tname  string `json:"tname"`
 	Starts string `json:"starts"`
 	Ends   string `json:"ends"`
 }
 
-func storecsv() {
+func dbConn() *mongo.Client {
 	// Set client options
 	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
 
@@ -42,8 +43,26 @@ func storecsv() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Connected to MongoDB!")
+	//fmt.Println("Connected to MongoDB!")
+	return client
+}
 
+func insert(column []string, collection *mongo.Collection) {
+	train := Train{
+		Number: column[1],
+		Tname:  column[2],
+		Starts: column[3],
+		Ends:   column[4],
+	}
+	_, err := collection.InsertOne(context.TODO(), train)
+	if err != nil {
+		log.Fatal(err)
+	}
+	done <- true
+}
+
+func storecsv() {
+	client := dbConn()
 	csvFile, err := os.Open("All_Indian_Trains.csv")
 
 	defer csvFile.Close()
@@ -57,18 +76,13 @@ func storecsv() {
 	}
 	collection := client.Database("train").Collection("trains")
 	for _, column := range csvLines {
-		train := Train{
-			ID:     column[0],
-			Number: column[1],
-			Tname:  column[2],
-			Starts: column[3],
-			Ends:   column[4],
-		}
-		_, err := collection.InsertOne(context.TODO(), train)
-		if err != nil {
-			log.Fatal(err)
-		}
+		go insert(column, collection)
 	}
+	for _, column := range csvLines {
+		_ = column
+		<-done
+	}
+
 	fmt.Println("Store Complete")
 }
 
@@ -97,7 +111,11 @@ func display(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	//storecsv()
+	/* log.Printf("Time taken without concurrecy 285ms")
+	start := time.Now()
+	storecsv()
+	elapsed := time.Since(start)
+	log.Printf("Time taken with concurrency %s", elapsed) */
 	fmt.Println("Server - http://localhost:8000/")
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.HandleFunc("/display", display)
