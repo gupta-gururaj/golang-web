@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JSON Test</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Contact Details</title>      
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
     <style>
         table {
             width: 1250px;
@@ -19,11 +16,23 @@
             margin-top: 20px;
         }
     </style>
-</head>
-<body>
-   <table border="1" cellspacing="auto" cellpadding="auto" id="myTable">
     <script>
-        fetch('http://localhost:8000/display')
+        display(0)
+        var pagenumber=1
+        function previousPage() {
+            var Table = document.getElementById("myTable");
+            Table.innerHTML = "<thead><tr><th>#</th><th>Train No.</th><th>Train Name</th><th>Starts</th><th>Ends</th></tr>  </thead> <tbody>";
+            pagenumber--
+            display(pagenumber)
+        }
+        function nextPage() {
+            var Table = document.getElementById("myTable");
+            Table.innerHTML = "<thead><tr><th>#</th><th>Train No.</th><th>Train Name</th><th>Starts</th><th>Ends</th></tr>  </thead> <tbody>";
+            pagenumber++
+            display(pagenumber)
+        }
+        function display(pagenumber) {
+            fetch('http://localhost:8000/limit/?page='+pagenumber)
             .then(function (response) {
                 return response.json();
             })
@@ -47,8 +56,18 @@
                 cell3.innerHTML = data[i].tname;
                 cell4.innerHTML = data[i].starts;
                 cell5.innerHTML = data[i].ends;
-            }
+            } 
+        }
         }
     </script>
+</head>
+<body>
+   <table border="1" cellspacing="auto" cellpadding="auto" id="myTable">
+    <thead><tr><th>#</th><th>Train No.</th><th>Train Name</th><th>Starts</th><th>Ends</th></tr>  </thead> <tbody>
+   </table>
+   <div style="margin-top: 20px; margin-left: 730px;">
+       <button onclick="previousPage()">Previous</button>
+       <button onclick="nextPage()">Next</button>
+   </div>
 </body>
 </html>
