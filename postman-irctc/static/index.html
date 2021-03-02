@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <style>
+        table {
+            width:2500;
+            margin: auto;
+            text-align: center;
+            margin-top: 25px;
+        }
+        th, td {
+            padding: 5px;
+        }
+    </style>
+    <script>
+        display(1)
+        var pagenumber=1
+        function previousPage() {
+            var Table = document.getElementById("myTable");
+            Table.innerHTML = "<thead><tr><th>Train No</th><th>Train Name</th><th>SEQ</th><th>Station Code</th><th>Station Name</th><th>Arrival time</th><th>Departure Time</th><th>Distance</th><th>Source Station</th><th>Source Station Name</th><th>Destination Station</th><th>Destination Station Name</th></tr></thead>";
+            pagenumber--
+            display(pagenumber)
+        }
+        function nextPage() {
+            var Table = document.getElementById("myTable");
+            Table.innerHTML = "<thead><tr><th>Train No</th><th>Train Name</th><th>SEQ</th><th>Station Code</th><th>Station Name</th><th>Arrival time</th><th>Departure Time</th><th>Distance</th><th>Source Station</th><th>Source Station Name</th><th>Destination Station</th><th>Destination Station Name</th></tr></thead>";
+            pagenumber++
+            display(pagenumber)
+        }
+        function display(pagenumber) {
+            fetch('http://localhost:9050/limit/?page='+pagenumber)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data)
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+        function appendData(data) {
+            var table = document.getElementById("myTable");
+            for (var i = 0; i < data.length; i++) {
+                var row = table.insertRow(-1); //insert below
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
+                var cell9 = row.insertCell(8);
+                var cell10 = row.insertCell(9);
+                var cell11 = row.insertCell(10);
+                var cell12 = row.insertCell(11);
+                cell1.innerHTML = data[i].trainNo;
+                cell2.innerHTML = data[i].trainName;
+                cell3.innerHTML = data[i].seq ;
+                cell4.innerHTML = data[i].code ;
+                cell5.innerHTML = data[i].stName ;
+                cell6.innerHTML = data[i].atime ;
+                cell7.innerHTML = data[i].dtime ;
+                cell8.innerHTML = data[i].distance ;
+                cell9.innerHTML = data[i].ss  ;
+                cell10.innerHTML = data[i].ssname;
+                cell11.innerHTML = data[i].ds  ;
+                cell12.innerHTML = data[i].dsName ;
+            } 
+        }
+        }
+    </script>
+</head>
+<body>
+   <div class="container-fluid">
+    <table border="1" cellspacing="auto" cellpadding="auto" id="myTable">
+        <thead><tr><th>Train No</th><th>Train Name</th><th>SEQ</th><th>Station Code</th><th>Station Name</th><th>Arrival time</th><th>Departure Time</th><th>Distance</th><th>Source Station</th><th>Source Station Name</th><th>Destination Station</th><th>Destination Station Name</th></tr></thead><tbody></tbody>
+       </table>
+   </div>
+   <div style="margin-top: 20px; margin-left: 730px; position: fixed;">
+       <button onclick="previousPage()">Previous</button>
+       <button onclick="nextPage()">Next</button>
+   </div>
+</body>
+</html>
