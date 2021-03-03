@@ -37,6 +37,10 @@ type response struct {
 
 var mySigningKey = []byte("captainjacksparrowsayshi")
 
+func homePage(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Public Page")
+}
+
 func admin(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "admin work begins from here . . .")
 }
@@ -175,6 +179,8 @@ func adminMiddleware(endpoint func(http.ResponseWriter, *http.Request)) http.Han
 		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 			if claims["role"] == "Admin" {
 				endpoint(w, r)
+			} else {
+				http.Redirect(w, r, "/", http.StatusSeeOther)
 			}
 		}
 	}
@@ -198,6 +204,8 @@ func superAdminMiddleware(endpoint func(http.ResponseWriter, *http.Request)) htt
 		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 			if claims["role"] == "Super Admin" {
 				endpoint(w, r)
+			} else {
+				http.Redirect(w, r, "/", http.StatusSeeOther)
 			}
 		}
 	}
@@ -216,6 +224,7 @@ func main() {
 	r := mux.NewRouter()
 
 	// Route handles & endpoints
+	r.HandleFunc("/", homePage).Methods("GET")
 	r.HandleFunc("/website", display).Methods("GET")
 	r.HandleFunc("/website", signup).Methods("POST")
 	r.HandleFunc("/login", logincheck).Methods("GET")
