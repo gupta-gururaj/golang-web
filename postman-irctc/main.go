@@ -190,53 +190,6 @@ func limitedDisplay(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(trains)
 }
 
-func specificDisplay(w http.ResponseWriter, r *http.Request) {
-	query := r.URL.Query()
-	ss := query.Get("ss")
-	ds := query.Get("ds")
-	er := godotenv.Load(".env")
-	if er != nil {
-		log.Fatalf("Error loading .env file")
-	}
-	uri := os.Getenv("URI")
-	database := os.Getenv("DB")
-	col := os.Getenv("COLLECTION")
-
-	w.Header().Set("Content-Type", "application/json")
-	// Declare host and port options to pass to the Connect() method
-	clientOptions := options.Client().ApplyURI(uri)
-
-	// Connect to the MongoDB and return Client instance
-	client, err := mongo.Connect(context.TODO(), clientOptions)
-	if err != nil {
-		fmt.Println("mongo.Connect() ERROR:", err)
-		os.Exit(1)
-	}
-
-	collection := client.Database(database).Collection(col)
-	if ds == "" {
-		cursor, err := collection.Find(context.TODO(), bson.M{"ss": ss})
-		if err != nil {
-			log.Fatal(err)
-		}
-		var trains []Train
-		if err = cursor.All(context.TODO(), &trains); err != nil {
-			log.Fatal(err)
-		}
-		json.NewEncoder(w).Encode(trains)
-	} else {
-		cursor, err := collection.Find(context.TODO(), bson.M{"ss": ss, "ds": ds})
-		if err != nil {
-			log.Fatal(err)
-		}
-		var trains []Train
-		if err = cursor.All(context.TODO(), &trains); err != nil {
-			log.Fatal(err)
-		}
-		json.NewEncoder(w).Encode(trains)
-	}
-}
-
 func alltrainsbetween(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	ss := query.Get("ss")
@@ -350,7 +303,6 @@ func main() {
 	fmt.Println("Server - http://localhost:9050/")
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.HandleFunc("/limit/", limitedDisplay)
-	http.HandleFunc("/specific/", specificDisplay)
 	http.HandleFunc("/alltrains/", alltrainsbetween)
 	http.ListenAndServe(":9050", nil)
 }
