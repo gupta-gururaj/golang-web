@@ -157,7 +157,7 @@ func newtable() {
 	db.AutoMigrate(&users{})
 }
 
-func roleMiddleware() http.HandlerFunc {
+func adminMiddleware(endpoint func(http.ResponseWriter, *http.Request)) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Header["Token"] == nil {
 			fmt.Fprintf(w, "Token Empty")
@@ -174,15 +174,35 @@ func roleMiddleware() http.HandlerFunc {
 		}
 		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 			if claims["role"] == "Admin" {
-				admin(w, r)
-			} else if claims["role"] == "Super Admin" {
-				superadmin(w, r)
-			} else {
-				fmt.Fprintf(w, "No match found")
+				endpoint(w, r)
 			}
 		}
 	}
 }
+
+func superAdminMiddleware(endpoint func(http.ResponseWriter, *http.Request)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Header["Token"] == nil {
+			fmt.Fprintf(w, "Token Empty")
+			return
+		}
+		token, err := jwt.Parse(r.Header["Token"][0], func(token *jwt.Token) (interface{}, error) {
+			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+				return nil, fmt.Errorf("There was an error in parsing")
+			}
+			return mySigningKey, nil
+		})
+		if err != nil {
+			fmt.Fprintf(w, err.Error())
+		}
+		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+			if claims["role"] == "Super Admin" {
+				endpoint(w, r)
+			}
+		}
+	}
+}
+
 func main() {
 	fmt.Println("Server - http://localhost:9020/")
 	newTable := flag.Bool("new-table", false, "Create new table and drops the old one")
@@ -199,7 +219,8 @@ func main() {
 	r.HandleFunc("/website", display).Methods("GET")
 	r.HandleFunc("/website", signup).Methods("POST")
 	r.HandleFunc("/login", logincheck).Methods("GET")
-	r.HandleFunc("/role", roleMiddleware()).Methods("GET")
+	r.HandleFunc("/admin", adminMiddleware(admin)).Methods("GET")
+	r.HandleFunc("/superadmin", superAdminMiddleware(superadmin)).Methods("GET")
 
 	// Start server
 	log.Fatal(http.ListenAndServe(":9020", r))
