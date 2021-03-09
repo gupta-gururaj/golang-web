@@ -71,6 +71,13 @@ function resetCalculator() {
   calculator.operator = null;
 }
 
+function updateDisplay() {
+  const display = document.querySelector('.calculator-screen');
+  display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
 const keys = document.querySelector('.calculator-keys');
 keys.addEventListener('click', (event) => {
   const { target } = event;
